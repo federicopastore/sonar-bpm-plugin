@@ -1,0 +1,8 @@
+<div class="dashbox">
+    <h3><%= metric('process_number').description -%></h3>
+    <p>
+    <span class="big">
+      <%= format_measure('process_number') -%> <%= trend_icon(measure('process_number')) -%>
+    </span>
+  </p>
+</div>

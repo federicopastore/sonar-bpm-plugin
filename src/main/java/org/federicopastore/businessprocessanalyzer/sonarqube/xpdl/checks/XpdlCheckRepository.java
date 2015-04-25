@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 
-public class XpdlCheckRepository
+public class XpdlCheckRepository 
 {
 
     private XpdlCheckRepository()
@@ -16,10 +16,10 @@ public class XpdlCheckRepository
     public static List getChecks()
     {
         return ImmutableList.of(
-        		new ActivityNameNotNullCheck(),
+        		//new ActivityNameNotNullCheck(),
         		//new ProcessDataSizeCheck(),
-        		new NextActivityDuplicatedCheck(),
-        		new ScriptTaskAfterTaskCheck()
+        		//new NextActivityDuplicatedCheck(),
+        		//new ScriptTaskAfterTaskCheck()
         		);
     }
 
@@ -33,6 +33,6 @@ public class XpdlCheckRepository
     }
 
     public static final String REPOSITORY_KEY = "xpdl";
-    public static final String REPOSITORY_NAME = "SonarQube";
-    public static final String SONAR_WAY_PROFILE_NAME = "Sonar way";
+    public static final String REPOSITORY_NAME = "SonarQube Xpdl Repository";
+    public static final String SONAR_WAY_PROFILE_NAME = "Sonar way Xpdl Profile";
 }

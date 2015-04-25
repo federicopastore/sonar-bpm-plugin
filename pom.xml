@@ -8,6 +8,15 @@
   <name>sonar-bpm-analyzer-plugin</name>
   <packaging>sonar-plugin</packaging>
   <description>Bpm Analyzer Plugin for SonarQube</description>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 

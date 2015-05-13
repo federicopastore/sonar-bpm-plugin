@@ -102,6 +102,7 @@ public class XpdlDecorator implements Decorator {
 				PackageDefinition pkg = parser.parse(new FileInputStream(ResourceFile));
 				context.saveMeasure(ProcessMetrics.PROCESSES_ON_PKG, new Double(pkg.getProcesses().size()).doubleValue());
 				int tot_activities=0;
+				int tot_transitions=0;
 				int tot_tasks =0;
 				int tot_events = 0;
 				int tot_routes=0;
@@ -116,6 +117,7 @@ public class XpdlDecorator implements Decorator {
 				for (int i = 0; i < pkg.getProcesses().size(); i++) {
 					WorkflowProcess process = pkg.getProcesses().get(i);
 					tot_activities +=process.getActivities().size();
+					tot_transitions +=process.getTransitions().size();
 					tot_tasks += process.getActivitiesbyType(ActivityType.Task).size();
 					tot_events +=process.getActivitiesbyType(ActivityType.Event).size();
 					tot_routes +=process.getActivitiesbyType(ActivityType.Route).size();
@@ -128,6 +130,8 @@ public class XpdlDecorator implements Decorator {
 					tot_tasks_receive+= process.getActvitiesbyTaskImplementationType(TaskImplementationType.TaskReceive).size();
 					tot_tasks_script+= process.getActvitiesbyTaskImplementationType(TaskImplementationType.TaskScript).size();
 				}
+				//transitions
+				context.saveMeasure(ProcessMetrics.TRANSITIONS_ON_PKG, new Double(tot_transitions).doubleValue());
 				//activities
 				context.saveMeasure(ProcessMetrics.ACTIVITIES_ON_PKG, new Double(tot_activities).doubleValue());
 				context.saveMeasure(ProcessMetrics.TASKS_ON_PKG, new Double(tot_tasks).doubleValue());

@@ -1,0 +1,39 @@
+<%
+   container_id = 'widget-issue-filter-' + widget.id.to_s
+
+   is_enough_permissions = filter.shared || (current_user && filter.userLogin == current_user.login)
+   if @dashboard_configuration.selected_period?
+     period_date = @snapshot.period_datetime(@dashboard_configuration.period_index).strftime('%FT%T%z')
+   else
+     period_date = nil
+   end
+%>
+
+
+
+  <% if is_enough_permissions %>
+
+    <% @widget_title = "<a href=\"#{url_for({:controller => 'component_issues', :action => 'index'})}?id=#{u(@project.key)}##{filter.data}\">#{h(filter.name)}</a>" %>
+    <% if widget_properties['displayFilterDescription'] && !filter.description.blank? %>
+      <p class="note spacer-bottom"><%= h filter.description -%></p>
+    <% end %>
+
+<% content_for :script do %>
+  <script>require(['source-viewer/app']);</script>
+<% end %>
+
+<div id="source-viewer"></div>
+
+<script type="text/javascript">
+  window.file = {
+    uuid: '<%= @resource.uuid -%>',
+    key: '<%= @resource.key -%>'
+    <% if @line %>,line: <%= @line -%><% end %>
+  };
+</script>
+
+  <% else %>
+
+    <p class="alert alert-warning"><%= message 'widget.issue_filter.insufficient_privileges_warning' -%></p>
+
+  <% end %>

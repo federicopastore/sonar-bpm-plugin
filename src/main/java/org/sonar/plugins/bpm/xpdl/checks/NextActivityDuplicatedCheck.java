@@ -25,9 +25,9 @@ import org.sonar.plugins.bpm.xpdl.checks.XpdlSourceCode;
  */
 @Rule(name = "Next Activity Duplicated Check", 
 description = "Checks if next activity is of same type. Examine if you can aggregate into one same sequential activity", 
-key = "org.federicopastore.businessprocessanalyzer.sonarqube.xpdl.checks.NextActivityDuplicatedCheck")
+key = "org.sonar.plugins.bpm.xpdl.checks.NextActivityDuplicatedCheck")
 public class NextActivityDuplicatedCheck extends AbstractXpdlCheck {
-	public static final String RULE_KEY = "org.federicopastore.businessprocessanalyzer.sonarqube.xpdl.checks.NextActivityDuplicatedCheck";
+	public static final String RULE_KEY = "org.sonar.plugins.bpm.xpdl.checks.NextActivityDuplicatedCheck";
 	private final RuleKey ruleKey = RuleKey.of(XpdlLanguage.KEY,
 			RULE_KEY);
 

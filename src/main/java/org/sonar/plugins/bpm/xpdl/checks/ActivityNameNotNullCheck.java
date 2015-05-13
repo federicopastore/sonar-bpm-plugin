@@ -25,11 +25,11 @@ import org.sonar.plugins.bpm.xpdl.checks.XpdlSourceCode;
 		name="Activity Name Not Null Check", 
 		description="The task name is used to identify a migration point. This means that all tasks must have names."
 					+"\n Note: By default, gateways do not have names. This means that you must specify a name for all gateways in your process if you want them to be valid migration points.",
-		key="org.federicopastore.businessprocessanalyzer.sonarqube.xpdl.checks.ActivityNameNotNullCheck"
+		key="org.sonar.plugins.bpm.xpdl.checks.ActivityNameNotNullCheck"
 		)
 public class ActivityNameNotNullCheck extends AbstractXpdlCheck {
 
-    public static final String RULE_KEY = "org.federicopastore.businessprocessanalyzer.sonarqube.xpdl.checks.ActivityNameNotNullCheck";
+    public static final String RULE_KEY = "org.sonar.plugins.bpm.xpdl.checks.ActivityNameNotNullCheck";
     private final RuleKey ruleKey = RuleKey.of(XpdlLanguage.KEY, RULE_KEY);
     
     @RuleProperty(key = "message", defaultValue = "The task name is used to identify a migration point. This means that all tasks must have names")

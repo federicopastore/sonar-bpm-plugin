@@ -23,11 +23,11 @@ import org.sonar.plugins.bpm.xpdl.checks.XpdlSourceCode;
  * @author federicopastore
  *
  */
-@Rule(name = "ScriptTask After Task Check", description = "Checks Script task presence after an activity with type TaskService or TaskUser. Examine if you can embed into previous task the script logic", key = "org.federicopastore.businessprocessanalyzer.sonarqube.xpdl.checks.ScriptTaskAfterTaskCheck")
+@Rule(name = "ScriptTask After Task Check", description = "Checks Script task presence after an activity with type TaskService or TaskUser. Examine if you can embed into previous task the script logic", key = "org.sonar.plugins.bpm.xpdl.checks.ScriptTaskAfterTaskCheck")
 
 public class ScriptTaskAfterTaskCheck extends AbstractXpdlCheck {
 
-	public static final String RULE_KEY = "org.federicopastore.businessprocessanalyzer.sonarqube.xpdl.checks.ScriptTaskAfterTaskCheck";
+	public static final String RULE_KEY = "org.sonar.plugins.bpm.xpdl.checks.ScriptTaskAfterTaskCheck";
 	private final RuleKey ruleKey = RuleKey.of(XpdlLanguage.KEY,
 			RULE_KEY);
 

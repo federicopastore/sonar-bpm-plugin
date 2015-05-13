@@ -5,3 +5,17 @@
 .project
 
 *.prefs
+
+repo/org/federicopastore/bpmanalyzer/sonar-bpm-analyzer-plugin/1.01.0-SNAPSHOT/maven-metadata.xml
+
+repo/org/federicopastore/bpmanalyzer/sonar-bpm-analyzer-plugin/1.01.0-SNAPSHOT/maven-metadata.xml.md5
+
+*.sha1
+
+repo/org/federicopastore/bpmanalyzer/sonar-bpm-analyzer-plugin/1.01.0-SNAPSHOT/sonar-bpm-analyzer-plugin-1.01.0-20150425.113054-1.jar
+
+*.md5
+
+repo/org/federicopastore/bpmanalyzer/sonar-bpm-analyzer-plugin/1.01.0-SNAPSHOT/sonar-bpm-analyzer-plugin-1.01.0-20150425.113054-1.pom
+
+repo/org/federicopastore/bpmanalyzer/sonar-bpm-analyzer-plugin/maven-metadata.xml

@@ -7,7 +7,8 @@
   <version>1.0</version>
   <name>sonar-bpm-plugin</name>
   <packaging>sonar-plugin</packaging>
-  <description>Bpm Analyzer Plugin for SonarQube</description>
+  <description>Bpm Plugin for SonarQube.
+This plugin support both Xpdl and bpmn language for Business Process Modelling</description>
 
   <organization>
     <name>Federico Pastore</name>

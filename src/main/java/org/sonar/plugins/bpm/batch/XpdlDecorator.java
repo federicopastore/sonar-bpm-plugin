@@ -63,6 +63,7 @@ public class XpdlDecorator implements Decorator {
 		case "PRJ":
 			context.saveMeasure(ProcessMetrics.PROCESSES, MeasureUtils.sum(true, context.getChildrenMeasures(ProcessMetrics.PROCESSES_ON_PKG)));
 			context.saveMeasure(ProcessMetrics.ACTIVITIES_ON_PKG, MeasureUtils.sum(true, context.getChildrenMeasures(ProcessMetrics.ACTIVITIES_ON_PKG)));
+			context.saveMeasure(ProcessMetrics.TRANSITIONS_ON_PKG, MeasureUtils.sum(true, context.getChildrenMeasures(ProcessMetrics.TRANSITIONS_ON_PKG)));
 			context.saveMeasure(ProcessMetrics.TASKS_ON_PKG, MeasureUtils.sum(true, context.getChildrenMeasures(ProcessMetrics.TASKS_ON_PKG)));
 			context.saveMeasure(ProcessMetrics.EVENTS_ON_PKG, MeasureUtils.sum(true, context.getChildrenMeasures(ProcessMetrics.EVENTS_ON_PKG)));
 			context.saveMeasure(ProcessMetrics.ROUTES_ON_PKG, MeasureUtils.sum(true, context.getChildrenMeasures(ProcessMetrics.ROUTES_ON_PKG)));
@@ -80,6 +81,7 @@ public class XpdlDecorator implements Decorator {
 		case "DIR":
 			context.saveMeasure(ProcessMetrics.PROCESSES, MeasureUtils.sum(true, context.getChildrenMeasures(ProcessMetrics.PROCESSES_ON_PKG)));
 			context.saveMeasure(ProcessMetrics.ACTIVITIES_ON_PKG, MeasureUtils.sum(true, context.getChildrenMeasures(ProcessMetrics.ACTIVITIES_ON_PKG)));
+			context.saveMeasure(ProcessMetrics.TRANSITIONS_ON_PKG, MeasureUtils.sum(true, context.getChildrenMeasures(ProcessMetrics.TRANSITIONS_ON_PKG)));
 			context.saveMeasure(ProcessMetrics.TASKS_ON_PKG, MeasureUtils.sum(true, context.getChildrenMeasures(ProcessMetrics.TASKS_ON_PKG)));
 			context.saveMeasure(ProcessMetrics.EVENTS_ON_PKG, MeasureUtils.sum(true, context.getChildrenMeasures(ProcessMetrics.EVENTS_ON_PKG)));
 			context.saveMeasure(ProcessMetrics.ROUTES_ON_PKG, MeasureUtils.sum(true, context.getChildrenMeasures(ProcessMetrics.ROUTES_ON_PKG)));

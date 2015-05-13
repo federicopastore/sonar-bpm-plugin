@@ -43,6 +43,7 @@ public class ProcessMetrics implements Metrics {
 		    .setQualitative(false)
 		    .setDomain(ProcessMetrics.DOMAIN_BPM)    
 		    .create();	
+	
 	public static final Metric TRANSITIONS_ON_PKG = new Metric.Builder("transitions_on_pkg", "Transitions", Metric.ValueType.INT) 
     .setDescription("Total number of Transitions inside a bpm process file")
     .setDirection(Metric.DIRECTION_BETTER)
@@ -140,6 +141,7 @@ public class ProcessMetrics implements Metrics {
 				PROCESSES, 
 				PROCESSES_ON_PKG,
 				ACTIVITIES_ON_PKG,
+				TRANSITIONS_ON_PKG,
 				TASKS_ON_PKG,
 				EVENTS_ON_PKG,
 				USERTASKS_ON_PKG,

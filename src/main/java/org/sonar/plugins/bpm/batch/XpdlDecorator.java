@@ -142,7 +142,10 @@ public class XpdlDecorator implements Decorator {
 				context.saveMeasure(ProcessMetrics.SENDTASKS_ON_PKG, new Double(tot_tasks_send).doubleValue());
 				context.saveMeasure(ProcessMetrics.RECEIVETASKS_ON_PKG, new Double(tot_tasks_receive).doubleValue());
 				context.saveMeasure(ProcessMetrics.SCRIPTTASKS_ON_PKG, new Double(tot_tasks_script).doubleValue());
-			} catch ( JDOMException | IOException e) {
+			} catch ( JDOMException e) {
+				e.printStackTrace();
+			}
+			catch( IOException e){
 				e.printStackTrace();
 			}
 			break;

@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.federicopastore.bpmanalyzer</groupId>
+  <groupId>org.codehaus.sonar-plugins.bpm</groupId>
   <artifactId>sonar-bpm-plugin</artifactId>
 
   <version>1.0-SNAPSHOT</version>
@@ -9,13 +9,25 @@
   <packaging>sonar-plugin</packaging>
   <description>Bpm Analyzer Plugin for SonarQube</description>
 
+  <organization>
+    <name>Federico Pastore</name>
+  </organization>
   <licenses>
     <license>
-      <name>Apache License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <name>GNU LGPL 3</name>
+      <url>http://www.gnu.org/licenses/lgpl.txt</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
+
+  <developers>
+    <developer>
+      <id>federico.pastore</id>
+      <name>Federico Pastore</name>
+      <email>federico.pastore@gmail.com</email>
+    </developer>
+
+  </developers>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

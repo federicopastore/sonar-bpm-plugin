@@ -3,11 +3,13 @@
  */
 package org.sonar.plugins.bpm.xpdl.checks;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
 import org.sonar.api.rule.RuleKey;
+import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.check.Rule;
 import org.sonar.check.RuleProperty;
 import org.sonar.plugins.bpm.language.XpdlLanguage;
@@ -18,6 +20,8 @@ import org.sonar.plugins.bpm.parser.elements.model.Activity.ImplementationType;
 import org.sonar.plugins.bpm.parser.xpdl.enums.TaskImplementationType;
 import org.sonar.plugins.bpm.xpdl.checks.AbstractXpdlCheck;
 import org.sonar.plugins.bpm.xpdl.checks.XpdlSourceCode;
+import org.sonar.squidbridge.annotations.SqaleConstantRemediation;
+import org.sonar.squidbridge.annotations.SqaleSubCharacteristic;
 
 /**
  * @author federicopastore
@@ -26,12 +30,14 @@ import org.sonar.plugins.bpm.xpdl.checks.XpdlSourceCode;
 @Rule(name = "Next Activity Duplicated Check", 
 description = "Checks if next activity is of same type. Examine if you can aggregate into one same sequential activity", 
 key = "org.sonar.plugins.bpm.xpdl.checks.NextActivityDuplicatedCheck")
+@SqaleSubCharacteristic(RulesDefinition.SubCharacteristics.EFFICIENCY_COMPLIANCE)
+@SqaleConstantRemediation("15min")
 public class NextActivityDuplicatedCheck extends AbstractXpdlCheck {
 	public static final String RULE_KEY = "org.sonar.plugins.bpm.xpdl.checks.NextActivityDuplicatedCheck";
 	private final RuleKey ruleKey = RuleKey.of(XpdlLanguage.KEY,
 			RULE_KEY);
 
-	@RuleProperty(key = "message", defaultValue = "Next Activity is of same type. Examine if yu can aggregate into one")
+	@RuleProperty(key = "message", defaultValue = "the activity task \"{0}\" is of same type of current \"{1}\". Examine if you can aggregate into one")
 	private String message;
 
 	public String getMessage() {
@@ -52,7 +58,7 @@ public class NextActivityDuplicatedCheck extends AbstractXpdlCheck {
 	 */
 	@Override
 	public void validate(XpdlSourceCode xpdlSourceCode) {
-		System.out.println("validating for rule: "+RULE_KEY);
+		//System.out.println("validating for rule: "+RULE_KEY);
 		setWebSourceCode(xpdlSourceCode);
 		PackageDefinition model = xpdlSourceCode.getModel();
 		List<WorkflowProcess> processes = model.getProcesses();
@@ -73,7 +79,8 @@ public class NextActivityDuplicatedCheck extends AbstractXpdlCheck {
 								&& element.getType().equals(
 										element.next().get(0).getType()))
 							createViolation(element.getStartLineNumber(),
-									message);
+									MessageFormat.format(message,element.getName(),element.next().get(0).getName())
+									);
 					}
 				}
 			}

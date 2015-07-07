@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.sonar.api.rule.RuleKey;
+import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.check.Rule;
 import org.sonar.check.RuleProperty;
 import org.sonar.plugins.bpm.language.XpdlLanguage;
@@ -16,6 +17,8 @@ import org.sonar.plugins.bpm.parser.elements.model.PackageDefinition;
 import org.sonar.plugins.bpm.parser.elements.model.WorkflowProcess;
 import org.sonar.plugins.bpm.xpdl.checks.AbstractXpdlCheck;
 import org.sonar.plugins.bpm.xpdl.checks.XpdlSourceCode;
+import org.sonar.squidbridge.annotations.SqaleConstantRemediation;
+import org.sonar.squidbridge.annotations.SqaleSubCharacteristic;
 
 /**
  * @author federicopastore
@@ -27,6 +30,8 @@ import org.sonar.plugins.bpm.xpdl.checks.XpdlSourceCode;
 					+"\n Note: By default, gateways do not have names. This means that you must specify a name for all gateways in your process if you want them to be valid migration points.",
 		key="org.sonar.plugins.bpm.xpdl.checks.ActivityNameNotNullCheck"
 		)
+@SqaleSubCharacteristic(RulesDefinition.SubCharacteristics.EFFICIENCY_COMPLIANCE)
+@SqaleConstantRemediation("5min")
 public class ActivityNameNotNullCheck extends AbstractXpdlCheck {
 
     public static final String RULE_KEY = "org.sonar.plugins.bpm.xpdl.checks.ActivityNameNotNullCheck";
@@ -53,7 +58,7 @@ public class ActivityNameNotNullCheck extends AbstractXpdlCheck {
 
 	    public void validate(XpdlSourceCode xpdlSourceCode)
 	    {
-	    	System.out.println("validating for rule: "+RULE_KEY);
+	    	//System.out.println("validating for rule: "+RULE_KEY);
 	        setWebSourceCode(xpdlSourceCode);
 	        PackageDefinition model = xpdlSourceCode.getModel();
 	        List<WorkflowProcess> processes = model.getProcesses();

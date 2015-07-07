@@ -180,7 +180,7 @@ public class ActivityImpl extends ElementParser implements Activity {
 					break;
 				case "TaskSend":
 					impl = new ImplementationImpl(
-							new TaskSend(taskelem),
+							new TaskSendImpl(taskelem),
 							org.sonar.plugins.bpm.parser.xpdl.enums.ImplementationType.Task);
 					break;
 				case "TaskReceive":

@@ -15,6 +15,7 @@ import org.sonar.plugins.bpm.parser.elements.model.Activity;
 import org.sonar.plugins.bpm.parser.elements.model.ActivitySet;
 import org.sonar.plugins.bpm.parser.elements.model.Application;
 import org.sonar.plugins.bpm.parser.elements.model.Assignment;
+import org.sonar.plugins.bpm.parser.elements.model.ComplexityAlgorithm;
 import org.sonar.plugins.bpm.parser.elements.model.DataAssociation;
 import org.sonar.plugins.bpm.parser.elements.model.DataField;
 import org.sonar.plugins.bpm.parser.elements.model.DataObject;
@@ -36,7 +37,7 @@ import org.sonar.plugins.bpm.parser.xpdl.enums.TaskImplementationType;
  * @author federicopastore
  *
  */
-public class WorkflowProcessImpl extends ElementParser implements WorkflowProcess {
+public class WorkflowProcessImpl extends ElementParser implements WorkflowProcess, ComplexityAlgorithm {
 
 	
 
@@ -383,6 +384,44 @@ public class WorkflowProcessImpl extends ElementParser implements WorkflowProces
 				list.add(activity);
 		}
 		return list;
+	}
+
+	
+	
+	
+	
+	@Override
+	public Double calculateCoefficientNetworkComplexity() {
+		int arcs= this.getTransitions().size();
+		int nodes = this.getActivities().size();
+		double result = (arcs^2)/nodes;
+		return new Double(result);
+	}
+
+	@Override
+	public Double calculateCyclomaticNumber() {
+		int arcs= this.getTransitions().size();
+		int nodes = this.getActivities().size();
+		double result = arcs - nodes + 1;
+		return new Double(result);
+	}
+
+	@Override
+	public Double calculateComplexityIndex() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Double calculateRestrictivenessEstimator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Double calculateNumberTreesInGraph() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

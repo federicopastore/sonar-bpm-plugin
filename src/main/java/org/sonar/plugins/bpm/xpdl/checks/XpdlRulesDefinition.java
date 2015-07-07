@@ -6,7 +6,7 @@ import java.util.List;
 import com.google.common.collect.ImmutableList;
 
 
-@Deprecated
+//@Deprecated
 public class XpdlRulesDefinition
 {
 
@@ -16,11 +16,13 @@ public class XpdlRulesDefinition
 
     public static List<Class> getChecks()
     {
-    	System.out.println("°°°°°°°°° XpdlCheckRepository.getChecks()");
+    	//System.out.println("°°°°°°°°° XpdlCheckRepository.getChecks()");
     	return ImmutableList.<Class>of(
     			ActivityNameNotNullCheck.class,
         		NextActivityDuplicatedCheck.class,
-        		ScriptTaskAfterTaskCheck.class
+        		ScriptTaskAfterTaskCheck.class,
+        		TIBCORuntimeTimeOutConfigurationCheck.class,
+        		ReplyToActivityCheck.class
     	);
         
     }

@@ -5,6 +5,8 @@ package org.sonar.plugins.bpm.parser.elements.model;
 
 import java.util.List;
 
+import org.sonar.plugins.bpm.parser.elements.model.tibcoextension.TibcoBpmRuntimeConfiguration;
+
 
 
 /**
@@ -61,5 +63,6 @@ public interface PackageDefinition extends BaseXpdlElement {
 	public String getScript();
 	public List<DataType> getTypeDeclarations();
 	public List<WorkflowProcess> getProcesses();
+	public TibcoBpmRuntimeConfiguration getRuntimeConfiguration();
 	
 }

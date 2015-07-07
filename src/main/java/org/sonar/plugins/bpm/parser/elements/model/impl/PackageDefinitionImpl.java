@@ -23,6 +23,7 @@ import org.sonar.plugins.bpm.parser.elements.model.PartnerLinkType;
 import org.sonar.plugins.bpm.parser.elements.model.Pool;
 import org.sonar.plugins.bpm.parser.elements.model.RedefinableHeader;
 import org.sonar.plugins.bpm.parser.elements.model.WorkflowProcess;
+import org.sonar.plugins.bpm.parser.elements.model.tibcoextension.TibcoBpmRuntimeConfiguration;
 
 /**
  * @author federicopastore
@@ -203,6 +204,15 @@ private List<DataField> datafields;
 	@Override
 	public List<WorkflowProcess> getProcesses() {
 		return processes;
+	}
+
+	@Override
+	public TibcoBpmRuntimeConfiguration getRuntimeConfiguration() {
+		Element tibcoBpmRuntimeConfiguration = getChildWithName("BpmRuntimeConfiguration");
+		TibcoBpmRuntimeConfigurationImpl impl = null;
+		if(tibcoBpmRuntimeConfiguration!=null)
+			impl = new TibcoBpmRuntimeConfigurationImpl(tibcoBpmRuntimeConfiguration);
+		return impl;
 	}
 
 }

@@ -78,7 +78,7 @@ public class XpdlSensor
                 	for (Iterator iterator2 = rules.iterator(); iterator2
 							.hasNext();check.validate(sourceCode)) {
 						ActiveRule activeRule = (ActiveRule) iterator2.next();
-						System.out.println("creating check for rule: "+activeRule.getRuleKey());
+						//System.out.println("creating check for rule: "+activeRule.getRuleKey());
 						check = ((AbstractXpdlCheck)createCheck(activeRule));
 						check.setRule(activeRule.getRule());
 					}

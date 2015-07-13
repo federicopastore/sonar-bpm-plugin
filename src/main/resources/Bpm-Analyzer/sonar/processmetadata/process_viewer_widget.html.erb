@@ -1,0 +1,24 @@
+<%
+   containerId = 'process-viewer-widget' + widget.id.to_s
+
+%>
+
+<!-- viewer -->
+<script src="/bower_components/bpmn-js/dist/bpmn-viewer.js"></script>
+<div class="process-viewer-widget" id="<%= containerId %>">
+    <!--[if lte IE 8 ]> <h3><%= message('widget.unsupported_browser_warning') -%></h3> <![endif]-->
+
+
+</div>
+<div id="canvas"></div>
+<script>
+// we use $.ajax to load the diagram.
+// make sure you run the application via web-server (ie. connect (node) or asdf (ruby))
+
+// require the viewer, make sure you added the bpmn-js bower distribution
+// along with all its dependencies to the web site
+var BpmnViewer = window.BpmnJS;
+
+var viewer = new BpmnViewer({ container: '#canvas' });
+
+</script>

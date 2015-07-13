@@ -126,6 +126,7 @@ public interface Event extends BaseXpdlElement {
 	public String getTimeCycle();
 	public String getTimeDate();
 	public TriggerType getTrigger();
+	public String getExtendedAttributeValue(String attribute);
 	
 	
 }

@@ -3,6 +3,10 @@
  */
 package org.sonar.plugins.bpm.parser.elements.model.impl;
 
+import java.util.Iterator;
+import java.util.List;
+
+import org.jdom.Attribute;
 import org.jdom.Element;
 import org.sonar.plugins.bpm.parser.elements.model.Message;
 import org.sonar.plugins.bpm.parser.elements.model.TriggerResultMessage;
@@ -39,4 +43,23 @@ public class TriggerResultMessageImpl extends ElementParser implements
 		return new WebServiceOperationImpl(getChildWithName("WebServiceOperation"));
 	}
 
+	@Override
+	public boolean getTibcoReplyImmediate() {
+		
+		String res = getExtendedAttributeValue("ReplyImmediate");
+		return Boolean.parseBoolean(res);
+	}
+	
+/*	private String getExtendedAttributeValue(String attributeKey){
+		//System.out.println("getdReplyActivityId: "+this.getCurrentElement().getName());
+		String result="";
+		List<Attribute> listAtt=this.getCurrentElement().getAttributes();
+		for (Iterator iterator = listAtt.iterator(); iterator.hasNext();) {
+			Attribute attribute = (Attribute) iterator.next();
+			//System.out.println("attrs: "+attribute.getName()+"="+attribute.getValue());
+			if(attribute.getName().equals(attributeKey))
+				result=attribute.getValue();
+		}
+		return result;
+	}*/
 }

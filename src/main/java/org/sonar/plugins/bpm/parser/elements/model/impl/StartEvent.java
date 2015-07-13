@@ -101,7 +101,7 @@ public class StartEvent extends ElementParser implements Event {
 	@Override
 	public TriggerResultMessage getTriggerResultMessage() {
 		TriggerResultMessage trm = null;
-		System.out.println("Element event "+ getCurrentElement().getName());
+		//System.out.println("Element event "+ getCurrentElement().getName());
 		Element trmElem = getChildWithName("TriggerResultMessage");
 		if(trmElem!=null){
 			trm = new TriggerResultMessageImpl(trmElem);

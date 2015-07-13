@@ -22,7 +22,8 @@ public class XpdlRulesDefinition
         		NextActivityDuplicatedCheck.class,
         		ScriptTaskAfterTaskCheck.class,
         		TIBCORuntimeTimeOutConfigurationCheck.class,
-        		ReplyToActivityCheck.class
+        		ReplyToActivityCheck.class,
+        		TIBCOReplyImmediateCheck.class
     	);
         
     }

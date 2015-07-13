@@ -13,9 +13,9 @@ import org.sonar.api.web.UserRole;
  *
  */
 @UserRole(UserRole.USER)
-@Description("Shows BPM Metrics for the project")
+@Description("Shows BPM representation for the project")
 
-public class ProcessMetricsWidget extends AbstractRubyTemplate implements
+public class ProcessViewerWidget extends AbstractRubyTemplate implements
 		RubyRailsWidget {
 
 	/* (non-Javadoc)
@@ -23,7 +23,7 @@ public class ProcessMetricsWidget extends AbstractRubyTemplate implements
 	 */
 	@Override
 	public String getId() {
-		return "process-metadata";
+		return "process-viewer";
 	}
 
 	/* (non-Javadoc)
@@ -31,7 +31,7 @@ public class ProcessMetricsWidget extends AbstractRubyTemplate implements
 	 */
 	@Override
 	public String getTitle() {
-		return "Process Metadata";
+		return "Process Viewer";
 	}
 
 	/* (non-Javadoc)
@@ -39,7 +39,7 @@ public class ProcessMetricsWidget extends AbstractRubyTemplate implements
 	 */
 	@Override
 	protected String getTemplatePath() {
-		return "/Bpm-Analyzer/sonar/processmetadata/processmetadata_widget.html.erb";
+		return "/Bpm-Analyzer/sonar/processmetadata/process_viewer_widget.html.erb";
 	}
 
 }

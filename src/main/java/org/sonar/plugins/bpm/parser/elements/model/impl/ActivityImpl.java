@@ -39,12 +39,11 @@ public class ActivityImpl extends ElementParser implements Activity {
 		this.checkForEvent();
 		this.checkForImplementation();
 		this.checkForRoute();
-		//this.blockActivity= new BlockActivityImpl(activity);
-		this.parent= parent;
+		// this.blockActivity= new BlockActivityImpl(activity);
+		this.parent = parent;
 		this.ingoingTransitions = new ArrayList<Transition>();
 		this.outgoingTransitions = new ArrayList<Transition>();
 	}
-
 
 	@Override
 	public ActivityType getType() {
@@ -160,10 +159,10 @@ public class ActivityImpl extends ElementParser implements Activity {
 				this.type = ActivityType.Task;
 				Element taskelem = (Element) implTypeElem.getChildren().get(0);
 				String taskType = taskelem.getName();
-				//System.out.println("questo è "+taskType);
+				// System.out.println("questo è "+taskType);
 				switch (taskType) {
 				case "TaskUser":
-					//System.out.println("questo è task utente");
+					// System.out.println("questo è task utente");
 					impl = new ImplementationImpl(
 							new TaskUser(taskelem),
 							org.sonar.plugins.bpm.parser.xpdl.enums.ImplementationType.Task);
@@ -196,7 +195,9 @@ public class ActivityImpl extends ElementParser implements Activity {
 			case "SubFlow":
 				this.type = ActivityType.SubFlow;
 				SubFlow subflow = new SubFlowImpl(implTypeElem, this);
-				impl = new ImplementationImpl(subflow, org.sonar.plugins.bpm.parser.xpdl.enums.ImplementationType.SubFlow);
+				impl = new ImplementationImpl(
+						subflow,
+						org.sonar.plugins.bpm.parser.xpdl.enums.ImplementationType.SubFlow);
 				break;
 			default:
 				break;
@@ -254,14 +255,14 @@ public class ActivityImpl extends ElementParser implements Activity {
 		return getCurrentElement().getAttributeValue("Priority");
 	}
 
-	private void checkForRoute(){
+	private void checkForRoute() {
 		Element child = getChildWithName("Route");
-		if(child !=null){
+		if (child != null) {
 			route = new RouteImpl(child);
-			this.type= ActivityType.Route;
+			this.type = ActivityType.Route;
 		}
 	}
-	
+
 	@Override
 	public Route getRoute() {
 		return this.route;
@@ -305,23 +306,24 @@ public class ActivityImpl extends ElementParser implements Activity {
 
 	@Override
 	public void addIngoingTransition(Transition transition) {
-		this.ingoingTransitions.add(transition);	
+		this.ingoingTransitions.add(transition);
 	}
 
 	@Override
 	public boolean isStartActivity() {
-		return this.ingoingTransitions.size() ==0;
+		return this.ingoingTransitions.size() == 0;
 	}
 
 	@Override
 	public boolean isEndActivity() {
-		return this.outgoingTransitions.size() ==0;
+		return this.outgoingTransitions.size() == 0;
 	}
 
 	@Override
 	public List<Activity> next() {
 		List<Activity> list = new ArrayList<Activity>();
-		for (Iterator iterator = outgoingTransitions.iterator(); iterator.hasNext();) {
+		for (Iterator iterator = outgoingTransitions.iterator(); iterator
+				.hasNext();) {
 			Transition trns = (Transition) iterator.next();
 			list.add(trns.getTo());
 		}
@@ -331,7 +333,8 @@ public class ActivityImpl extends ElementParser implements Activity {
 	@Override
 	public List<Activity> previous() {
 		List<Activity> list = new ArrayList<Activity>();
-		for (Iterator iterator = outgoingTransitions.iterator(); iterator.hasNext();) {
+		for (Iterator iterator = outgoingTransitions.iterator(); iterator
+				.hasNext();) {
 			Transition trns = (Transition) iterator.next();
 			list.add(trns.getTo());
 		}

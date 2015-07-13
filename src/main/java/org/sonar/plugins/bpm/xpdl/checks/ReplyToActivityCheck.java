@@ -14,10 +14,14 @@ import org.sonar.check.Rule;
 import org.sonar.check.RuleProperty;
 import org.sonar.plugins.bpm.language.XpdlLanguage;
 import org.sonar.plugins.bpm.parser.elements.model.Activity;
+import org.sonar.plugins.bpm.parser.elements.model.Event;
 import org.sonar.plugins.bpm.parser.elements.model.PackageDefinition;
 import org.sonar.plugins.bpm.parser.elements.model.TaskSend;
 import org.sonar.plugins.bpm.parser.elements.model.WorkflowProcess;
+import org.sonar.plugins.bpm.parser.xpdl.enums.ActivityType;
+import org.sonar.plugins.bpm.parser.xpdl.enums.EventType;
 import org.sonar.plugins.bpm.parser.xpdl.enums.TaskImplementationType;
+import org.sonar.plugins.bpm.parser.xpdl.enums.TriggerType;
 import org.sonar.squidbridge.annotations.SqaleConstantRemediation;
 import org.sonar.squidbridge.annotations.SqaleSubCharacteristic;
 
@@ -65,6 +69,19 @@ public class ReplyToActivityCheck extends AbstractXpdlCheck {
 					createViolation(t.getStartLineNumber(), 
 							MessageFormat.format(message,activity.getName(),workflowProcess.getActivityById(t.getExtendedAttributeValue("ReplyToActivityId")).getName())
 									);
+			}
+			//xpdExt:ReplyToActivityId
+			Collection<Activity> events =workflowProcess.getActivitiesbyType(ActivityType.Event);
+			for (Iterator iterator3 = events.iterator(); iterator3.hasNext();) {
+				Activity activity = (Activity) iterator3.next();
+				Event ev =(Event) activity.getEvent();
+				if(ev.getType() == EventType.EndEvent || ev.getType() == EventType.IntermediateEvent){
+				if(ev.getTrigger() == TriggerType.Message && ev.getTriggerResultMessage()!=null)
+					if(!ev.getTriggerResultMessage().getExtendedAttributeValue("ReplyToActivityId").isEmpty())
+					createViolation(ev.getTriggerResultMessage().getStartLineNumber(), 
+							MessageFormat.format(message,activity.getName(),workflowProcess.getActivityById(ev.getTriggerResultMessage().getExtendedAttributeValue("ReplyToActivityId")).getName())
+									);
+				}
 			}
 		}
 	}

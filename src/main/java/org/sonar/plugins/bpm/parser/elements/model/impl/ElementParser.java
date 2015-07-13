@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.jdom.Attribute;
 import org.jdom.Element;
 import org.jdom.contrib.input.LineNumberElement;
 import org.sonar.plugins.bpm.parser.elements.model.Activity;
@@ -132,5 +133,18 @@ private void buildExtendedAttributes(){
 			datamappings.add(dm);
 		}
 		return datamappings;
+	}
+	
+	public String getExtendedAttributeValue(String attributeKey){
+		//System.out.println("getdReplyActivityId: "+this.getCurrentElement().getName());
+		String result="";
+		List<Attribute> listAtt=this.getCurrentElement().getAttributes();
+		for (Iterator iterator = listAtt.iterator(); iterator.hasNext();) {
+			Attribute attribute = (Attribute) iterator.next();
+			//System.out.println("attrs: "+attribute.getName()+"="+attribute.getValue());
+			if(attribute.getName().equals(attributeKey))
+				result=attribute.getValue();
+		}
+		return result;
 	}
 }

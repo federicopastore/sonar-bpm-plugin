@@ -43,6 +43,13 @@ public class ProcessMetrics implements Metrics {
 		    .setQualitative(false)
 		    .setDomain(ProcessMetrics.DOMAIN_BPM)    
 		    .create();	
+
+	public static final Metric NOA = new Metric.Builder("noa", "Number Of Activities", Metric.ValueType.INT) 
+    .setDescription("Number of Activities inside a bpm process file, Used as size metric")
+    .setDirection(Metric.DIRECTION_BETTER)
+    .setQualitative(false)
+    .setDomain(CoreMetrics.DOMAIN_SIZE)    
+    .create();	
 	
 	public static final Metric TRANSITIONS_ON_PKG = new Metric.Builder("transitions_on_pkg", "Transitions", Metric.ValueType.INT) 
     .setDescription("Total number of Transitions inside a bpm process file")
@@ -138,6 +145,7 @@ public class ProcessMetrics implements Metrics {
 	@Override
 	public List<Metric> getMetrics() {
 		return Arrays.asList( 
+				NOA,
 				PROCESSES, 
 				PROCESSES_ON_PKG,
 				ACTIVITIES_ON_PKG,

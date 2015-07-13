@@ -60,9 +60,9 @@ public interface Activity extends BaseXpdlElement{
 		    None, Implemetation, Route, GateWay, Event, BlockActivity
 		  }
 */	
-	  public static enum ImplementationType {
-	    None, Application, Task, SubFlow, SubProcess
-	  }
+	  //public static enum ImplementationType {
+	  //  None, Application, Task, SubFlow, SubProcess
+	  //}
 	  /*
 	  public static enum EventType {
 		    StartEvent, IntermediateEvent, EndEvent

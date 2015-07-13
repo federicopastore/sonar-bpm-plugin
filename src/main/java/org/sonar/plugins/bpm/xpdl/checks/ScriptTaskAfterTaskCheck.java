@@ -16,10 +16,8 @@ import org.sonar.plugins.bpm.language.XpdlLanguage;
 import org.sonar.plugins.bpm.parser.elements.model.Activity;
 import org.sonar.plugins.bpm.parser.elements.model.PackageDefinition;
 import org.sonar.plugins.bpm.parser.elements.model.WorkflowProcess;
-import org.sonar.plugins.bpm.parser.elements.model.Activity.ImplementationType;
+import org.sonar.plugins.bpm.parser.xpdl.enums.ActivityType;
 import org.sonar.plugins.bpm.parser.xpdl.enums.TaskImplementationType;
-import org.sonar.plugins.bpm.xpdl.checks.AbstractXpdlCheck;
-import org.sonar.plugins.bpm.xpdl.checks.XpdlSourceCode;
 import org.sonar.squidbridge.annotations.SqaleConstantRemediation;
 import org.sonar.squidbridge.annotations.SqaleSubCharacteristic;
 
@@ -65,7 +63,7 @@ public class ScriptTaskAfterTaskCheck extends AbstractXpdlCheck {
 				Activity element = iterator2.next();
 				
 				if (element.getImplementation()!=null && element.getImplementation().getType().toString()
-						 == ImplementationType.Task.toString()) {
+						 == ActivityType.Task.toString()) {
 //check next elements
 					if (element.next().size() == 1
 							&& element.next().get(0).getImplementation()!=null
